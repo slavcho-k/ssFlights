@@ -42,20 +42,18 @@ class UserService (
 
         val roleUser = roleRepository.findByAuthority("USER")!!.get()
 
-        var set = mutableListOf<Role?>()
+        val set = mutableListOf<Role?>()
 
         set.add(roleUser)
 
         val encodedPassword = passwordEncoder.encode(user.password)
 
-        var savedUser =
+        val savedUser =
             User(user.username,encodedPassword,user.surname,user.email,user.name,set)
 
         userRepository.save(savedUser)
 
         val token = UUID.randomUUID().toString()
-
-            // TODO: SEND EMAIL
 
         return ResponseEntity.ok().body("{\"message\": \"Successful!\"}");
 
@@ -66,7 +64,7 @@ class UserService (
 
         if (userRepository.findByUsername(username).isPresent) {
 
-            var user: Optional<User> = userRepository.findByUsername(username)
+            val user: Optional<User> = userRepository.findByUsername(username)
 
             return org.springframework.security.core.userdetails.User(user.get().email, user.get().password, null)
 

@@ -66,6 +66,4 @@ class WebSecurityConfig(
     override fun init(builder: WebSecurity?) {
         // TODO()
     }
-
-
 }

@@ -48,7 +48,7 @@ class AdminDataService(
 
     fun avgFlightTime(): String {
         val flightTimes = flightRepository.findAll().map { f ->
-            val durationParts = f.flightTime.split("[hm]".toRegex()) // Splitting by 'h' or 'm'
+            val durationParts = f.flightTime.split("[hm]".toRegex())
             val hours = durationParts[0].toInt()
             val minutes = durationParts[1].toInt()
             (hours * 60) + minutes

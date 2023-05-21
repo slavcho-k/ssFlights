@@ -18,4 +18,5 @@ class AdminDataController(
     fun getAdminData(): ResponseEntity<AdminDataDto> {
         return adminDataService.getAdminDataStats()
     }
+
 }

@@ -22,7 +22,7 @@ class LoginService(
 
         if(userService.userRepository.findByUsername(user.username).isPresent){
 
-            var userCheckPassword: User = userService.userRepository.findByUsername(user.username).get()
+            val userCheckPassword: User = userService.userRepository.findByUsername(user.username).get()
 
             if(passwordEncoder.encode().matches(user.password,userCheckPassword.password)){
 
