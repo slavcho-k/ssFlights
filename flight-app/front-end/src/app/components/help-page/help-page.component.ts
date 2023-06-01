@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { faqs } from '../constants/faq';
+import { faqs } from '../../constants/faq';
 
 @Component({
   selector: 'app-help-page',

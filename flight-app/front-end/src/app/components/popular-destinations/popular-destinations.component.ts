@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Destination } from '../interfaces/destination';
-import { DestinationList } from '../constants/destinations-list';
+import { Destination } from '../../interfaces/destination';
+import { DestinationList } from '../../constants/destinations-list';
 import { Router } from '@angular/router';
 
 @Component({

@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../services/user.service';
+import { UserService } from '../../services/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { FlightService } from '../services/flight.service';
-import { FlightDto } from '../interfaces/flight-dto';
-import { BookFlightPayload } from '../interfaces/book-flight-payload';
-import { UserInfoDto } from '../interfaces/user-info-dto';
+import { FlightService } from '../../services/flight.service';
+import { FlightDto } from '../../interfaces/flight-dto';
+import { BookFlightPayload } from '../../interfaces/book-flight-payload';
+import { UserInfoDto } from '../../interfaces/user-info-dto';
 
 @Component({
   selector: 'app-payment',

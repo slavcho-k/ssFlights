@@ -98,7 +98,7 @@ button:disabled {
 
 #background {
   position: absolute;
-  background: url("../../assets/login.jpg") no-repeat center center;
+  background: url("../../../assets/login.jpg") no-repeat center center;
   height: 100%;
   width: 100%;
 }

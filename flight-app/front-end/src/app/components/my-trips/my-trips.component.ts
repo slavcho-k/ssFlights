@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { SelectedFlight } from '../interfaces/selected-flight';
+import { SelectedFlight } from '../../interfaces/selected-flight';
 import { DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
-import { FlightService } from '../services/flight.service';
+import { FlightService } from '../../services/flight.service';
 import { mergeMap, of, forkJoin } from 'rxjs';
 
 @Component({

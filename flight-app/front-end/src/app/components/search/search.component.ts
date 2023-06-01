@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../services/api.service';
+import { ApiService } from '../../services/api.service';
 import { ActivatedRoute } from '@angular/router';
-import { TokenService } from '../services/token.service';
+import { TokenService } from '../../services/token.service';
 import { mergeMap } from 'rxjs/operators';
 
 @Component({

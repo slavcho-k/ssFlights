@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { ContactForm } from '../contact-form';
+import { ContactForm } from '../../interfaces/contact-form';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
