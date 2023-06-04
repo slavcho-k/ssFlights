@@ -8,9 +8,7 @@ import java.util.*
 
 @Repository
 interface BookingRepository : JpaRepository<Booking,Long> {
-
     fun getBookingByFlight(flight:Flight): Optional<Booking>
 
     fun findAllyByUserUserId(id:Long): MutableList<Optional<Booking>>
-
 }

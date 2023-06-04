@@ -4,7 +4,6 @@ import jakarta.persistence.*
 
 @Entity
 class MyTrip {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private val id: Long? = null

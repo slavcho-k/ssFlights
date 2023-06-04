@@ -13,67 +13,46 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.stereotype.Service
 import java.util.*
 
-
-
 @Service
-class UserService (
+class UserService(
     @Autowired
     var userRepository: UserRepository,
     var passwordEncoder: BCryptPasswordEncoder,
     var roleRepository: RoleRepository
-) : UserDetailsService{
-
-    fun signUp(user: User):ResponseEntity<String>{
-
+) : UserDetailsService {
+    fun signUp(user: User): ResponseEntity<String> {
         val userExistsByEmail = userRepository.findByEmail(user.email.orEmpty()).isPresent
-
         val userExistsByUsername = userRepository.findByUsername(user.username).isPresent
 
         if (userExistsByEmail) {
-
             return ResponseEntity.badRequest().body("email already taken")
-
-        }
-        else if(userExistsByUsername){
-
+        } else if (userExistsByUsername) {
             return ResponseEntity.badRequest().body("username already taken")
-
         }
 
         val roleUser = roleRepository.findByAuthority("USER")!!.get()
-
         val set = mutableListOf<Role?>()
-
         set.add(roleUser)
 
         val encodedPassword = passwordEncoder.encode(user.password)
-
         val savedUser =
-            User(user.username,encodedPassword,user.surname,user.email,user.name,set)
+            User(user.username, encodedPassword, user.surname, user.email, user.name, set)
 
         userRepository.save(savedUser)
 
         val token = UUID.randomUUID().toString()
 
         return ResponseEntity.ok().body("{\"message\": \"Successful!\"}");
-
     }
 
     @Throws(UsernameNotFoundException::class)
     override fun loadUserByUsername(username: String): UserDetails {
-
         if (userRepository.findByUsername(username).isPresent) {
-
             val user: Optional<User> = userRepository.findByUsername(username)
-
             return org.springframework.security.core.userdetails.User(user.get().email, user.get().password, null)
-
         } else {
-
             throw UsernameNotFoundException()
-
         }
     }
-
 }
 

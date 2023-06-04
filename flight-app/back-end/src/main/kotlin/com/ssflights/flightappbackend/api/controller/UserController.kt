@@ -10,7 +10,6 @@ import org.springframework.mail.SimpleMailMessage
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.web.bind.annotation.*
 
-
 @RestController
 @RequestMapping(path = ["/api"])
 @CrossOrigin(origins = arrayOf("http://localhost:4200"))
@@ -52,19 +51,17 @@ class UserController(
     @PostMapping("/send-email")
     fun sendEmail(@RequestBody form: ContactForm) {
         val message = SimpleMailMessage()
-        message.setFrom("ssflights2023@gmail.com")
+        message.from = "ssflights2023@gmail.com"
         message.setTo("ssflights2023@gmail.com")
-        message.setSubject("New Contact Form Submission")
-        message.setText(
-            """
-            Name: ${form.name}
-            Surname: ${form.surname}
-            Email: ${form.email}
-            
-            Message:
-            ${form.message}
-            """
-        )
+        message.subject = "New Contact Form Submission"
+        message.text = """
+                Name: ${form.name}
+                Surname: ${form.surname}
+                Email: ${form.email}
+                
+                Message:
+                ${form.message}
+                """
 
         try {
             emailService.javaMailSender.send(message)

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping(path = ["/api/admin"])
-@CrossOrigin(origins = arrayOf("http://localhost:4200"))
+@CrossOrigin(origins = ["http://localhost:4200"])
 class AdminDataController(
     private val adminDataService: AdminDataService,
 ) {
@@ -18,5 +18,4 @@ class AdminDataController(
     fun getAdminData(): ResponseEntity<AdminDataDto> {
         return adminDataService.getAdminDataStats()
     }
-
 }

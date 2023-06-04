@@ -1,12 +1,10 @@
 package com.ssflights.flightappbackend.domain
 
-
 import jakarta.persistence.*
 
 @Entity
 @Table(name = "payments")
 class Payment {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val paymentId: Long? = null;

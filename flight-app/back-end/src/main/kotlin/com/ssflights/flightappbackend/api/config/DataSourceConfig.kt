@@ -7,7 +7,6 @@ import javax.sql.DataSource
 
 @Configuration
 class DataSourceConfig {
-
     @Bean
     fun dataSource(): DataSource {
         val dataSource = DriverManagerDataSource()

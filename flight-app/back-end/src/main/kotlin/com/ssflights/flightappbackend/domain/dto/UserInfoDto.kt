@@ -1,6 +1,5 @@
 package com.ssflights.flightappbackend.domain.dto
 
-
 class UserInfoDto(
 ) {
     constructor(username: String, email: String, name: String, surname: String) : this() {

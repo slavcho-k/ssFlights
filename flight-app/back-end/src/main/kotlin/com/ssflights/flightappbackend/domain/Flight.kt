@@ -5,7 +5,6 @@ import jakarta.persistence.*
 @Entity
 @Table(name = "flights")
 class Flight {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val flightId: Long? = null;
@@ -37,7 +36,6 @@ class Flight {
 
     var isBooked: Boolean = false
 
-
     constructor(
         fromDestination: String,
         toDestination: String,
@@ -66,5 +64,4 @@ class Flight {
     }
 
     constructor()
-
 }

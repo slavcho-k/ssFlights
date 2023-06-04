@@ -6,14 +6,12 @@ import com.ssflights.flightappbackend.service.FlightService
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
-
 @RestController
 @RequestMapping(path = ["/api/flights"])
-@CrossOrigin(origins = arrayOf("http://localhost:4200"))
+@CrossOrigin(origins = ["http://localhost:4200"])
 class FlightController(
     private val flightService: FlightService
 ) {
-
     @PostMapping()
     fun userBooksFlight(@RequestBody payload: BookFlightPayload): ResponseEntity<String> {
         return flightService.bookingLogic(payload)
@@ -28,5 +26,4 @@ class FlightController(
     fun userSavesFlightToMyTrips(@RequestBody payload: BookFlightPayload): ResponseEntity<String> {
         return flightService.saveFlightToMyTrips(payload)
     }
-
 }

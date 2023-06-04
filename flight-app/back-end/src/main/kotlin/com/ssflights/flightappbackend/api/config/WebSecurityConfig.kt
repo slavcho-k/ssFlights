@@ -16,7 +16,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.builders.WebSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 
-
 @Configuration
 @EnableWebSecurity
 class WebSecurityConfig(
@@ -24,8 +23,6 @@ class WebSecurityConfig(
     private val userService: UserService,
     private val passwordEncoder:PasswordEncoder
 ) : WebSecurityConfigurer<WebSecurity> {
-
-
     @Throws(Exception::class)
     fun configure(http: HttpSecurity) {
         http.authorizeRequests()
@@ -35,23 +32,19 @@ class WebSecurityConfig(
             .headers().frameOptions().disable()
     }
 
-
     @Throws(Exception::class)
     override fun configure(web: WebSecurity) {
-        web.ignoring()
-            .anyRequest()
+        web.ignoring().anyRequest()
     }
-
 
     @Throws(Exception::class)
     fun configure(auth: AuthenticationManagerBuilder) {
         auth.userDetailsService(userService)
     }
 
-
     @Bean
     fun authenticationProvider(): DaoAuthenticationProvider {
-        var auth: DaoAuthenticationProvider = DaoAuthenticationProvider()
+        val auth: DaoAuthenticationProvider = DaoAuthenticationProvider()
         auth.setUserDetailsService(userService)
         return auth
     }
@@ -60,7 +53,6 @@ class WebSecurityConfig(
     @Throws(Exception::class)
     fun authenticationManager(authConfiguration: AuthenticationConfiguration): AuthenticationManager {
         return authConfiguration.authenticationManager
-
     }
 
     override fun init(builder: WebSecurity?) {

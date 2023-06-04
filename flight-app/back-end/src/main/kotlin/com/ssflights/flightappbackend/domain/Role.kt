@@ -3,7 +3,6 @@ package com.ssflights.flightappbackend.domain
 import jakarta.persistence.*
 import org.springframework.security.core.GrantedAuthority
 
-
 @Entity
 @Table(name = "roles")
 class Role : GrantedAuthority {
@@ -31,5 +30,4 @@ class Role : GrantedAuthority {
     fun setAuthority(authority: String?) {
         this.authority = authority
     }
-
 }

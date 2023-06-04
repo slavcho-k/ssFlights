@@ -8,7 +8,6 @@ import org.springframework.mail.javamail.JavaMailSenderImpl
 
 @Configuration
 class MailConfig {
-
     @Value("\${spring.mail.host}")
     lateinit var host: String
 
@@ -31,10 +30,10 @@ class MailConfig {
         mailSender.password = password
 
         val props = mailSender.javaMailProperties
-        props.put("mail.transport.protocol", "smtp")
-        props.put("mail.smtp.auth", "true")
-        props.put("mail.smtp.starttls.enable", "true")
-        props.put("mail.debug", "true")
+        props["mail.transport.protocol"] = "smtp"
+        props["mail.smtp.auth"] = "true"
+        props["mail.smtp.starttls.enable"] = "true"
+        props["mail.debug"] = "true"
 
         return mailSender
     }

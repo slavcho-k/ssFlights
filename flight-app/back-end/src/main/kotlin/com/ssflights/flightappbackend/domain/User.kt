@@ -26,11 +26,9 @@ class User : UserDetails {
     )
     private var authorities: MutableList<Role?> = mutableListOf()
 
-
     constructor() : super() {
         authorities = mutableListOf()
     }
-
 
     constructor(
         username: String?,

@@ -1,12 +1,10 @@
 package com.ssflights.flightappbackend.domain
 
-
 import jakarta.persistence.*
 
 @Entity
 @Table(name = "bookings")
 class Booking {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val bookingId: Long? = null;
@@ -18,7 +16,6 @@ class Booking {
     var flight: Flight? = null
 
     var numberOfSeats: Int = 140
-
 
     @OneToOne(mappedBy = "booking", cascade = [CascadeType.ALL])
     var payment: Payment? = null
@@ -33,5 +30,4 @@ class Booking {
     }
 
     constructor()
-
 }
