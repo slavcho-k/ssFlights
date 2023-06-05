@@ -1,6 +1,5 @@
 # ssFlights
-
-#Getting started
+Getting started
 
 # Front end
 Installing dependencies
