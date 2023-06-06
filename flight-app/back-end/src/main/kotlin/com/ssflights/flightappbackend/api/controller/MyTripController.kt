@@ -27,4 +27,4 @@ class MyTripController(
     fun deleteMethod(@PathVariable flightId: Long, @PathVariable username:String): ResponseEntity<Void> {
         return myTripsService.deleteMethod(username, flightId)
     }
- }
+}

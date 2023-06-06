@@ -39,38 +39,26 @@ class AdminDataService(
     fun getAvgFlightCost(): Double =
         String.format("%.2f", getTotalMoneySpent() / paymentRepository.count().toDouble()).toDouble()
 
-    fun totalFlightsBooked(): Long = bookingRepository.count() ?: 0L
+    fun totalFlightsBooked(): Long = bookingRepository.count()
 
     fun findMostPopularDestination(): String = flightRepository.findMostPopularDestination().orElse("No destinations!")
 
     fun getFlightsInLastMonth(): Int =
         flightRepository.findAll().map { f -> f.boardingDate.subSequence(5, 7) == getCurrentMonth() }.count()
 
-    fun avgFlightTime(): String {
-        val flightTimes = flightRepository.findAll().map { f ->
-            val durationParts = f.flightTime.split("[hm]".toRegex())
-            val hours = durationParts[0].toInt()
-            val minutes = durationParts[1].toInt()
-            (hours * 60) + minutes
-        }
-
-        return convertToHoursAndMinutes(flightTimes.average())
-    }
+    fun avgFlightTime(): String = convertToHoursAndMinutes(
+        flightRepository.findAll().map { f ->
+            f.flightTime.split("[hm]".toRegex()).let { parts -> (parts[0].toInt() * 60) + parts[1].toInt() }
+        }.average()
+    )
 
     fun getMostExpensiveFlight(): Double = flightRepository.findAll().maxOfOrNull { f -> f.price } ?: 0.0
 
     fun getTotalUsers(): Long = usersRepository.count()
 
-    fun getCurrentMonth(): String {
-        val currentDate = LocalDate.now()
-        val formatter = DateTimeFormatter.ofPattern("MM")
-        return currentDate.format(formatter)
-    }
+    fun getCurrentMonth(): String = LocalDate.now().format(DateTimeFormatter.ofPattern("MM"))
 
-    fun convertToHoursAndMinutes(totalMinutes: Double): String {
-        val hours = totalMinutes / 60
-        val minutes = totalMinutes % 60
+    fun convertToHoursAndMinutes(totalMinutes: Double): String =
+        "${(totalMinutes / 60).toInt()}h${(totalMinutes % 60).toInt()}m"
 
-        return "${floor(hours).toInt()}h${floor(minutes).toInt()}m"
-    }
 }
